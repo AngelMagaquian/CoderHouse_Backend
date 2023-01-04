@@ -54,8 +54,6 @@ class ProductManager {
         this.saveInFile( this.products)
     }
 
-
-
     loadFile(){
         let _products;
         try{
@@ -69,8 +67,8 @@ class ProductManager {
     }
   }
 
-  let productList  = new ProductManager('../../desafio2/products.json')
-  module.exports = {productList}
+  let ProductList  = new ProductManager('../../desafio2/products.json')
+  module.exports = {ProductList}
 
 /* 
     let pro = new ProductManager('./products.json')
