@@ -7,6 +7,7 @@ class ProductManager {
       this.path = path
       this.products = []
       this.loadFile()
+      console.log('construido')
     }
     addPorduct(product){
         if( this.products.every((e) => e.code != product.code)){
@@ -18,7 +19,7 @@ class ProductManager {
     }
     
     getPropducts(){
-      return loadFile();
+      return this.loadFile();
     }
     
     getProductById(id){
@@ -68,7 +69,10 @@ class ProductManager {
     }
   }
 
+  let productList  = new ProductManager('../../desafio2/products.json')
+  module.exports = {productList}
 
+/* 
     let pro = new ProductManager('./products.json')
 
     const obj = {title:'new 2', desc: 'new desc 2', price: 2000, thumbnail: 'url', code: 2, stock:100}
@@ -87,6 +91,6 @@ class ProductManager {
     pro.addPorduct(obj3)
     console.log('load file =>  ',pro.loadFile())
     console.log('get product by id => ',pro.getProductById(2)) 
+ */
 
-
-    pro.deleteProduct(1) 
+  /*   pro.deleteProduct(1)  */
