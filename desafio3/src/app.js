@@ -1,7 +1,7 @@
 const express = require('express')
 
-const fs = require('node:fs');
-class ProductManager {
+/* const fs = require('node:fs'); */
+/* class ProductManager {
     products;
     static id = 0;
     constructor(path){
@@ -40,7 +40,7 @@ class ProductManager {
     }
 
     updateProduct(id, arr){
-        /* this.products = this.products.filter(e => e.id === id ? e = arr : false) */
+        //this.products = this.products.filter(e => e.id === id ? e = arr : false) 
         let index = this.getIndexById(id)
         let aux_id = this.products[index].id
         this.products[index] = arr
@@ -65,25 +65,25 @@ class ProductManager {
         this.products = _products
         return this.products
     }
-}
+} */
 
 
-const Pm = new ProductManager('../../desafio2/products.json')
+/* const Pm = new ProductManager('../../desafio2/products.json') */
 
-
+const {productList} = require('../../desafio2/desafio2')
 /*Inicializo server */
 const app = express()
 app.use(express.urlencoded({extended:true}))
 
 app.get('/products', (req,res)=>{
     let limit = req.query.limit 
-    res.send(Pm.getPropducts().slice(0,limit))
+    res.send(productList.getPropducts().slice(0,limit))
 })
 
 app.get('/products/:pid',(req,res)=>{
     let id = parseInt(req.params.pid)
-    res.send( Pm.getProductById(id))
+    res.send( productList.getProductById(id))
 })
 
 
-app.listen(8080,()=> console.log('Server up'))
+app.listen(8080,()=> console.log('Server up')) 
