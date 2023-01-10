@@ -1,0 +1,13 @@
+[
+    {
+        "id":0, 
+        "title": "example",
+        "desc": "example desc",
+        "code": "1",
+        "price": 100,
+        "status": true,
+        "stock": 1000,
+        "category": "example",
+        "thumbnails":["example.png"]
+    }
+]
