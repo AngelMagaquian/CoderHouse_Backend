@@ -9,7 +9,6 @@ class Product {
     }
 
     addProduct(product){
-        console.dir(product)
         if( this.products.every((e) => e.code != product.code)){
             product.id = Product.id ++
             this.products.push(product)
@@ -39,9 +38,9 @@ class Product {
     }
 
     updateProduct(id, changes){
-        let index = this.getIndexById(id)
+        const _index = this.getIndexById(id)
         Object.entries(changes).map(e=>{
-            this.products[index][e[0]] = e[1]
+            this.products[_index][e[0]] = e[1]
         })
         this.saveInFile( this.products)
     }

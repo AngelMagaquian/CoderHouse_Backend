@@ -1,10 +1,6 @@
 const express = require('express');
-/* const multer = require("multer"); */
 const routerProducts = express.Router();
-/* const app = express() */
 const {ProductList} = require('../../class/product.class')
-
-console.log(ProductList)
 
 routerProducts.get('/', (req,res)=>{
     const _limit = req.query.limit 

@@ -4,29 +4,64 @@ class Cart {
     static id = 0;
     constructor(path){
       this.path = path
-      this.products = []
+      this.carts = []
       this.loadFile()
     }
 
-    addCart(carts){
-        if( this.products.every((e) => e.code != product.code)){
-            product.id = ProductManager.id ++
-            this.products.push(product)
-            this.saveInFile(this.products)
-        }
+    addCart(){
+        const cart = {products:[]}
+        cart.id = Cart.id ++
+        this.carts.push(cart)
+        this.saveInFile(this.carts)
     }
 
     getCart(){
         return this.loadFile();
     }
       
-    /* getProductById(id){
-      let res = this.products.filter((e)=> e.id === id)
-      return res.length > 0 ? res : 'Not found'
-    } */
+    getCartById(id){
+      let res = this.carts.filter((e)=> e.id === id)
+      return res.length > 0 ? res : false
+    }
 
     getIndexById(id){
-        return this.products.findIndex(e=> e.id === id)
+        return this.carts.findIndex(e=> e.id === id)
+    }
+
+    addProduct(id,pro){
+
+        const _index = this.getIndexById(id)
+
+        if(this.carts[_index]){
+            if(this.carts[_index].products.filter(e=> e.id === pro).length > 0){
+                this.carts[_index].products.map((x,i)=>{  
+                    if(x.id === pro){this.carts[_index].products[i].quantity ++}
+                })
+            }else{
+                this.carts[_index].products.push({id:pro, quantity: 1})
+            }
+            this.saveInFile(this.carts)
+        }
+        /* if(this.carts[_index]){
+            if(this.carts[_index].products.length > 0){
+                
+                if(this.carts[_index].products.filter(e=> e.id === pro).length > 0){
+                    this.carts[_index].products.map((x,i)=>{
+                        
+                        if(x.id === pro){this.carts[_index].products[i].quantity ++}
+                    })
+                }else{
+                    this.carts[_index].products.push({id, quantity: 1})
+                }
+               
+            }else{
+                
+                this.carts[_index].products.push({id, quantity: 1})
+            }
+           
+            this.saveInFile(this.carts)
+           
+        } */
     }
 
     saveInFile(arr){
@@ -47,7 +82,7 @@ class Cart {
 
     deleteCart(id){
         let index = this.getIndexById(id)
-        this.products.splice(index,1)
+        this.carts.splice(index,1)
         this.saveInFile( this.carts)
     }
 
@@ -64,5 +99,5 @@ class Cart {
     }
 }
 
-let CartsList  = new Product('./db/carts.json')
+let CartsList  = new Cart('./db/carts.json')
 module.exports = {CartsList}
