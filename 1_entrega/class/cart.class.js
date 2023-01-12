@@ -1,6 +1,6 @@
 const fs = require('node:fs')
-class Product {
-    products;
+class Cart {
+    carts;
     static id = 0;
     constructor(path){
       this.path = path
@@ -8,23 +8,22 @@ class Product {
       this.loadFile()
     }
 
-    addProduct(product){
-        console.dir(product)
+    addCart(carts){
         if( this.products.every((e) => e.code != product.code)){
-            product.id = Product.id ++
+            product.id = ProductManager.id ++
             this.products.push(product)
             this.saveInFile(this.products)
         }
     }
 
-    getPropducts(){
+    getCart(){
         return this.loadFile();
     }
       
-    getProductById(id){
+    /* getProductById(id){
       let res = this.products.filter((e)=> e.id === id)
       return res.length > 0 ? res : 'Not found'
-    }
+    } */
 
     getIndexById(id){
         return this.products.findIndex(e=> e.id === id)
@@ -38,32 +37,32 @@ class Product {
         }
     }
 
-    updateProduct(id, changes){
+    updateCart(id, arr){
         let index = this.getIndexById(id)
-        Object.entries(changes).map(e=>{
-            this.products[index][e[0]] = e[1]
-        })
-        this.saveInFile( this.products)
+        let aux_id = this.products[index].id
+        this.carts[index] = arr
+        this.carts[index].id = aux_id
+        this.saveInFile( this.carts)
     }
 
-    deleteProduct(id){
+    deleteCart(id){
         let index = this.getIndexById(id)
         this.products.splice(index,1)
-        this.saveInFile( this.products)
+        this.saveInFile( this.carts)
     }
 
     loadFile(){
-        let _products;
+        let _carts;
         try{
-            _products = JSON.parse(fs.readFileSync(this.path, 'UTF-8'))
+            _carts = JSON.parse(fs.readFileSync(this.path, 'UTF-8'))
         }catch(err){
             console.log(err)
         }
        
-        this.products = _products
-        return this.products
+        this.carts = _carts
+        return this.carts
     }
 }
 
-let ProductList  = new Product('./db/products.json')
-module.exports = {ProductList}
+let CartsList  = new Product('./db/carts.json')
+module.exports = {CartsList}

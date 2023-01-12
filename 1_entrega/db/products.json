@@ -1,13 +1,1 @@
-[
-    {
-        "id":0, 
-        "title": "example",
-        "desc": "example desc",
-        "code": "1",
-        "price": 100,
-        "status": true,
-        "stock": 1000,
-        "category": "example",
-        "thumbnails":["example.png"]
-    }
-]
+[{"id":0,"title":"example","desc":"example desc","code":"1","price":100,"status":true,"stock":1000,"category":"example","thumbnails":["example.png"]},{"title":"example 2","desc":"example desc 2","code":"2","price":100,"status":true,"stock":1000,"category":"example","thumbnails":["example.png"],"id":1}]

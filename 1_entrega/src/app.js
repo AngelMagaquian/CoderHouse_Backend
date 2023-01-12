@@ -8,7 +8,6 @@ const cartsRouter = require('./router/carts.router')
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-
 app.use('/api/products', routerProducts)
 app.use('/api/carts', cartsRouter)
 
