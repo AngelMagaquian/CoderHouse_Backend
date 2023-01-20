@@ -2,11 +2,12 @@ const express = require('express');
 const routerProducts = express.Router();
 const {ProductList} = require('../../class/product.class')
 
+
 routerProducts.get('/', (req,res)=>{
     const _limit = req.query.limit 
     const _pro = ProductList.getPropducts().slice(0,_limit)
     if(Object.entries(_pro).length != 0){
-        res.status(200).send(_pro)
+        res.send(_pro)
     }else{
         res.status(400).send('Empty data')
     }
@@ -51,4 +52,6 @@ routerProducts.delete('/:pid',(req,res)=>{
     ProductList.deleteProduct(_id)
     res.status(200).send('OK')
 })
+
+
 module.exports = routerProducts
