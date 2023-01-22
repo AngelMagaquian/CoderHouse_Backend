@@ -1,7 +1,6 @@
 const fs = require('node:fs')
 class Cart {
     carts;
-    static id = 0;
     constructor(path){
       this.path = path
       this.carts = []
@@ -10,7 +9,7 @@ class Cart {
 
     addCart(){
         const cart = {products:[]}
-        cart.id = Cart.id ++
+        cart.id = this.getLastId()
         this.carts.push(cart)
         this.saveInFile(this.carts)
     }
@@ -96,6 +95,12 @@ class Cart {
        
         this.carts = _carts
         return this.carts
+    }
+
+    getLastId(){
+        let _carts = this.loadFile()
+        let id = _carts.length > 0 ? _carts[_carts.length - 1].id + 1 : 1;
+        return id
     }
 }
 

@@ -1,7 +1,16 @@
 <h1>Real Time Products</h1>
 
-<div class="products-container" id="productContainer">
-    <p id="productList"></p>
+<div class="container">
+    <form action="" method="post" id="form">
+        <input type="text" name="pro_title" id="pro_title" placeholder="Title">
+        <input type="number" name="pro_code" id="pro_code" placeholder="Code">
+        <input type="text" name="pro_desc" id="pro_desc" placeholder="Desc">
+        <input type="submit" value="Send">
+    </form>
+
+
+    <ul id="product_list"></ul>
 </div>
 
+<script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/js/realTimeProducts.controller.js" ></script>

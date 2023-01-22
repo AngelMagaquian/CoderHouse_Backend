@@ -6,6 +6,7 @@ const app = express()
 const routerProducts = require('./router/products.router')
 
 const cartsRouter = require('./router/carts.router')
+const { ProductList } = require('../class/product.class')
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -26,7 +27,6 @@ app.set('view engine', 'handlebars')
 app.set('views', __dirname + '/views')
 app.use(express.static(__dirname + '/public'))
 
-console.log(__dirname+'/public')
 app.get('/', (req,res) => {
     res.render('home',{})
 })
@@ -34,5 +34,22 @@ app.get('/', (req,res) => {
 app.get('/realTimeProducts', (req,res) => {
   res.render('realTimeProducts',{})
 })
+
+
+io.on("connection", (socket) => {
+  console.log('New user session')
+  
+  let products = [{title:'test 1'}] /*Aca deberia tener la consulta a la api */
+
+  socket.on('message', async (data)=>{
+    let products = await ProductList.addProduct(data)
+    
+    io.emit("productList", ProductList.getPropducts())
+  })
+  
+  
+})
+
+
 
 

@@ -1,1 +1,54 @@
-[{"id":0,"title":"example","desc":"example desc","code":"1","price":100,"status":true,"stock":1000,"category":"example","thumbnails":["example.png"]},{"title":"example 2","desc":"example desc 2","code":"2","price":100,"status":true,"stock":1000,"category":"example","thumbnails":["example.png"],"id":1},{"title":"example 3","desc":"example desc 3","code":"3","price":200,"status":true,"stock":450,"category":"example","thumbnails":["example.png"],"id":0},{"title":"example 4","desc":"example desc 4","code":"4","price":200,"status":true,"stock":450,"category":"example","thumbnails":["example.png"],"id":1},{"title":"example 5","desc":"example desc 5","code":"5","price":4566,"status":30,"stock":450,"category":"example","thumbnails":["example.png"],"id":1}]
+[
+    {
+        "title": "example 1",
+        "desc": "example desc 1",
+        "code": "5",
+        "price": 4566,
+        "status": true,
+        "stock": 450,
+        "category": "example",
+        "thumbnails": [
+            "example.png"
+        ],
+        "id": 1
+    },
+    {
+        "title": "Example Socket",
+        "desc": "Desc example socket",
+        "code": "1211",
+        "price": 0,
+        "status": true,
+        "stock": 0,
+        "category": "",
+        "thumbnails": [
+            ""
+        ],
+        "id": 2
+    },
+    {
+        "title": "example 3",
+        "desc": "example desc 3",
+        "code": "503",
+        "price": 454,
+        "status": true,
+        "stock": 122,
+        "category": "example",
+        "thumbnails": [
+            "example.png"
+        ],
+        "id": 3
+    },
+    {
+        "title": "Example Socket 2",
+        "desc": "Desc example socket 2",
+        "code": "1222",
+        "price": 0,
+        "status": true,
+        "stock": 0,
+        "category": "",
+        "thumbnails": [
+            ""
+        ],
+        "id": 4
+    }
+]

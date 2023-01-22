@@ -1,7 +1,6 @@
 const fs = require('node:fs')
 class Product {
     products;
-    static id = 0;
     constructor(path){
       this.path = path
       this.products = []
@@ -10,7 +9,9 @@ class Product {
 
     addProduct(product){
         if( this.products.every((e) => e.code != product.code)){
-            product.id = Product.id ++
+
+            product.id = this.getLastId()
+            
             this.products.push(product)
             this.saveInFile(this.products)
         }
@@ -62,6 +63,16 @@ class Product {
         this.products = _products
         return this.products
     }
+
+    getLastId(){
+        let _products = this.loadFile()
+        let id = _products.length > 0 ? _products[_products.length - 1].id + 1 : 1;
+        return id
+    }
+
+
+
+    
 }
 
 let ProductList  = new Product('./db/products.json')

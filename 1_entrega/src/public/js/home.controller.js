@@ -10,7 +10,7 @@ const get_products = ()=>{
         response.map(e=>{
            add_element(proList,e.title)
         })
-     })
+    })
 }
 
 
@@ -18,6 +18,5 @@ const get_products = ()=>{
 
 
 window.addEventListener('load', function(){
-
     get_products()
 })

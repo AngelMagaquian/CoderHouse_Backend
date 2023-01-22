@@ -11,7 +11,6 @@ routerProducts.get('/', (req,res)=>{
     }else{
         res.status(400).send('Empty data')
     }
-
 })
 
 routerProducts.get('/:pid',(req,res)=>{
@@ -27,6 +26,8 @@ routerProducts.get('/:pid',(req,res)=>{
 
 routerProducts.post('/',(req,res)=>{
     const _pro = req.body
+
+    console.dir(_pro)
     if(Object.entries(_pro).length != 0){
         ProductList.addProduct(_pro)
         res.status(200).send('OK')
