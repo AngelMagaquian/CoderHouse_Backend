@@ -21,7 +21,7 @@ document.getElementById('form').addEventListener('submit', function(e){
         category: "",
         thumbnails:[""]
     }
-    socket.emit('message', new_product)
+    socket.emit('productMessage', new_product)
 })
 
 
